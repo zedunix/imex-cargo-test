@@ -1,0 +1,2 @@
+import { awards } from "../../content";
+export default function TrackRecord() { return <section className="track section-pad"><div className="section-heading"><p className="eyebrow">Track record / Placeholder recognition</p><h2>PROOF IN<br/><span>THE PROGRESS.</span></h2></div><div className="award-row">{awards.map((a, i) => <article className="award-card" key={a.title}><span>0{i + 1}</span><strong>{a.year}</strong><h3>{a.title}</h3><p>{a.source}</p><i>↗</i></article>)}</div></section>; }
