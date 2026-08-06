@@ -1,0 +1,2 @@
+import type { CSSProperties } from "react";
+export default function AmbientCargo(){return <div className="ambient-cargo" aria-hidden="true"><div className="particle-field">{Array.from({length:28},(_,i)=><i key={i} style={{"--x":`${(i*37)%100}%`,"--delay":`${-(i%9)*.7}s`,"--speed":`${5+(i%7)}s`,"--size":`${2+(i%3)}px`} as CSSProperties}/>)}</div><div className="crane-silhouette"><span className="crane-mast"/><span className="crane-arm"/><span className="crane-cable"/><span className="crane-hook">⌄</span></div></div>}

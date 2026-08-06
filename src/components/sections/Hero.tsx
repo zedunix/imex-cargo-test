@@ -17,8 +17,7 @@ export default function Hero() {
         return;
       }
       const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: "top top", end: "+=1800", pin: true, scrub: true } });
-      tl.from(words, { yPercent: 125, rotate: 4, stagger: .16, ease: "power3.out" })
-        .to(".hero-orbit", { scale: 1.4, rotate: 55, ease: "none" }, 0)
+      tl.from(words, { y: 36, opacity: 0, scale: .96, stagger: .16, ease: "power3.out" })
         .from(".stat", { y: 40, opacity: 0, stagger: .1 }, .55);
       document.querySelectorAll<HTMLElement>("[data-count]").forEach(el => {
         const target = Number(el.dataset.count);
@@ -28,5 +27,5 @@ export default function Hero() {
     }, root);
     return () => ctx.revert();
   }, []);
-  return <section className="hero section-pad" ref={root}><div className="hero-orbit" /><p className="eyebrow">Global freight / local precision</p><h1>{["WE", "MOVE", "WHAT"].map(w => <span className="word-clip" key={w}><span className="hero-word">{w}</span></span>)}<span className="word-clip accent-line"><span className="hero-word">MOVES YOU.</span></span></h1><div className="stats">{stats.map(s => <div className="stat" key={s.label}><strong><span data-count={s.value}>0</span>{s.suffix}</strong><span>{s.label}</span></div>)}</div></section>;
+  return <section className="hero section-pad" ref={root}><p className="eyebrow">Global freight / local precision</p><h1>{["WE", "MOVE", "WHAT"].map(w => <span className="word-clip" key={w}><span className="hero-word">{w}</span></span>)}<span className="word-clip accent-line"><span className="hero-word">MOVES YOU.</span></span></h1><div className="stats">{stats.map(s => <div className="stat" key={s.label}><strong><span data-count={s.value}>0</span>{s.suffix}</strong><span>{s.label}</span></div>)}</div></section>;
 }

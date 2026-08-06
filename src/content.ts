@@ -34,7 +34,7 @@ export const facilityFeatures = [
   { number: "04", title: "Always visible", copy: "Inventory and movement status available through one connected view." },
 ];
 export const testimonials: Testimonial[] = [
-  { quote: "Northline turned our most complex lane into the easiest part of our supply chain.", name: "Maya Chen", role: "COO, Placeholder Labs" },
+  { quote: "IMEX turned our most complex lane into the easiest part of our supply chain.", name: "Maya Chen", role: "COO, Placeholder Labs" },
   { quote: "Fast answers, accurate milestones, and no surprises at the border.", name: "Omar Haddad", role: "Supply Director, Placeholder Group" },
   { quote: "They operate like an extension of our own team—calm, exact, and always moving.", name: "Leah Morgan", role: "Founder, Placeholder Goods" },
 ];
