@@ -9,6 +9,7 @@ import OpeningOrbit from "./components/OpeningOrbit";
 import IntroGate from "./components/sections/IntroGate";
 import Hero from "./components/sections/Hero";
 import WhoWeAre from "./components/sections/WhoWeAre";
+import ServicesOverview from "./components/sections/ServicesOverview";
 import Services from "./components/sections/Services";
 import GlobalReach from "./components/sections/GlobalReach";
 import TrackRecord from "./components/sections/TrackRecord";
@@ -35,5 +36,5 @@ export default function App() {
     });
     return () => { journey.kill(); gsap.ticker.remove(raf); lenis.destroy(); };
   }, []);
-  return <main><BackgroundVideo/><AmbientCargo/><OpeningOrbit/><div className="journey-ui" aria-hidden="true"><div className="journey-brand">IM<span>EX</span></div><div className="journey-track"><i /></div><small>GLOBAL LOGISTICS / 2026</small></div><IntroGate/><Hero/><WhoWeAre/><Services/><GlobalReach/><TrackRecord/><Partners/><FacilityHighlight/><Testimonials/><CTAFooter/></main>;
+  return <main><BackgroundVideo/><AmbientCargo/><OpeningOrbit/><div className="journey-ui" aria-hidden="true"><div className="journey-brand">IM<span>EX</span></div><div className="journey-track"><i /></div><small>GLOBAL LOGISTICS / 2026</small></div><IntroGate/><Hero/><WhoWeAre/><Services/><ServicesOverview/><GlobalReach/><TrackRecord/><Partners/><FacilityHighlight/><Testimonials/><CTAFooter/></main>;
 }
