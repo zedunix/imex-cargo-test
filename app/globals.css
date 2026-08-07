@@ -67,8 +67,8 @@ main>section,main>footer { position:relative; z-index:2; transform-origin:50% 0;
 .service-cargo i:nth-child(2){height:72px}.service-cargo i:nth-child(3){height:42px}
 .service-direction { position:absolute; right:4vw; bottom:20px; z-index:4; font-size:9px; letter-spacing:.15em; }.service-direction span{font-size:18px;margin-left:12px}
 .cargo-object-lane { position:absolute; z-index:3; left:0; right:0; top:18%; height:48%; overflow:hidden; pointer-events:none; }
-.cargo-morph-traveler { position:absolute; left:0; top:58%; width:clamp(105px,12vw,190px); aspect-ratio:1; color:var(--ink); transform:translate3d(-50%,-50%,0); transform-origin:center; will-change:transform; }
-.cargo-morph-traveler img { display:block; width:100%; height:100%; object-fit:contain; user-select:none; filter:drop-shadow(0 9px 0 rgba(10,10,10,.09)); }
+.cargo-morph-traveler { position:absolute; left:0; top:58%; width:clamp(82px,9vw,145px); aspect-ratio:1; color:var(--ink); transform:translate3d(-50%,-50%,0); transform-origin:center; will-change:transform; }
+.cargo-morph-traveler img { display:block; width:100%; height:100%; object-fit:contain; user-select:none; opacity:.88; filter:drop-shadow(0 6px 10px rgba(10,10,10,.12)); transform-origin:center; transition:none; }
 .cargo-object-lane.reduced .cargo-morph-traveler { left:50%; }
 @keyframes cargo-static-fade { from { opacity:0; } to { opacity:1; } }
 
