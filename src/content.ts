@@ -1,6 +1,8 @@
 export type Service = { number: string; shortTitle: string; title: string; description: string };
 export type Stat = { value: number; suffix: string; label: string };
 export type Testimonial = { quote: string; name: string; role: string };
+export const icons = ["plane", "ship", "truck", "perfume-bottle", "box", "forklift", "hazard-drum", "stamp", "scooter"] as const;
+export type CargoIconName = (typeof icons)[number];
 
 export const stats: Stat[] = [
   { value: 60, suffix: "+", label: "Partners" },
