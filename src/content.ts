@@ -5,9 +5,10 @@ export const icons = ["plane", "ship", "truck", "perfume-bottle", "box", "forkli
 export type CargoIconName = (typeof icons)[number];
 
 export const stats: Stat[] = [
-  { value: 60, suffix: "+", label: "Partners" },
-  { value: 1580, suffix: "+", label: "Clients" },
-  { value: 15, suffix: "+", label: "Years" },
+  { value: 60, suffix: "+", label: "Global Channel Partners" },
+  { value: 1580, suffix: "+", label: "Clients Served" },
+  { value: 15, suffix: "+", label: "Years of Experience" },
+  { value: 3, suffix: "", label: "Warehouses in UAE" },
 ];
 
 export const services: Service[] = [

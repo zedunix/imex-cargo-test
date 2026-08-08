@@ -20,11 +20,23 @@ export default function Gallery() {
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const ctx = gsap.context(() => {
-      ScrollTrigger.batch(".gallery-tile", { start: "top 92%", onEnter: batch => gsap.fromTo(batch, { y: 70, opacity: 0, clipPath: "inset(12% 0 0 0)" }, { y: 0, opacity: 1, clipPath: "inset(0% 0 0 0)", duration: .85, stagger: .09, ease: "power3.out" }) });
-      gsap.utils.toArray<HTMLElement>(".gallery-tile").forEach(tile => gsap.fromTo(tile.querySelector("img"), { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: tile, start: "top bottom", end: "bottom top", scrub: true } }));
+      ScrollTrigger.batch(".gallery-tile", {
+        start: "top 92%",
+        onEnter: batch => gsap.fromTo(batch,
+          { opacity: 0, clipPath: "inset(8% 0 0 0)" },
+          { opacity: 1, clipPath: "inset(0% 0 0 0)", duration: .75, stagger: .08, ease: "power2.out" },
+        ),
+      });
+      gsap.utils.toArray<HTMLElement>(".gallery-tile").forEach(tile => {
+        gsap.fromTo(tile.querySelector("img"), { scale: 1.045 }, {
+          scale: 1, ease: "none",
+          scrollTrigger: { trigger: tile, start: "top bottom", end: "bottom top", scrub: true },
+        });
+      });
     }, root);
     return () => ctx.revert();
   }, []);
+
   return <section className="gallery-story section-pad" ref={root} aria-labelledby="gallery-title">
     <header className="gallery-story-head">
       <p className="eyebrow">Inside IMEX / people and progress</p>

@@ -6,7 +6,7 @@ import { services } from "../../content";
 import CargoObject from "./CargoObject";
 gsap.registerPlugin(ScrollTrigger);
 
-const panelColors = ["#ff4d00", "#ff7a00", "#f4b400", "#d7ed36", "#36d891", "#18b9ad", "#3974e9", "#7250d8", "#c84ccf"];
+const panelColors = ["#f5b62a", "#f7c44c", "#f7cf67", "#f4db8e", "#f7f5ef", "#dce7e9", "#c4d6dc", "#a9c2cc", "#8eaeba"];
 
 export default function Services() {
   const root = useRef<HTMLElement>(null);
