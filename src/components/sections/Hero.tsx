@@ -12,6 +12,24 @@ export default function Hero() {
     const mobile = matchMedia("(max-width: 767px)").matches;
     const ctx = gsap.context(() => {
       const words = gsap.utils.toArray<HTMLElement>(".hero-word");
+      const counters = gsap.utils.toArray<HTMLElement>("[data-count]");
+      const setCounts = (progress: number) => counters.forEach(el => {
+        const target = Number(el.dataset.count || 0);
+        el.textContent = Math.round(target * progress).toLocaleString("en-US");
+      });
+      if (reduce) setCounts(1);
+      else ScrollTrigger.create({
+        trigger: root.current,
+        start: mobile ? "top 78%" : "top top",
+        end: mobile ? "bottom 42%" : "+=1800",
+        scrub: true,
+        onUpdate: self => {
+          const countProgress = mobile
+            ? gsap.utils.clamp(0, 1, self.progress)
+            : gsap.utils.clamp(0, 1, (self.progress - .34) / .42);
+          setCounts(countProgress);
+        },
+      });
       if (reduce || mobile) {
         gsap.from(words, { opacity: 0, y: 32, stagger: .08, duration: .55, scrollTrigger: { trigger: root.current, start: "top 75%" } });
         return;
@@ -19,11 +37,6 @@ export default function Hero() {
       const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: "top top", end: "+=1800", pin: true, scrub: true } });
       tl.from(words, { y: 36, opacity: 0, scale: .96, stagger: .16, ease: "power3.out" })
         .from(".stat", { y: 40, opacity: 0, stagger: .1 }, .55);
-      document.querySelectorAll<HTMLElement>("[data-count]").forEach(el => {
-        const target = Number(el.dataset.count);
-        const proxy = { n: 0 };
-        gsap.to(proxy, { n: target, ease: "none", scrollTrigger: { trigger: root.current, start: "bottom 115%", end: "bottom 95%", scrub: true }, onUpdate: () => { el.textContent = Math.round(proxy.n).toString(); } });
-      });
     }, root);
     return () => ctx.revert();
   }, []);
