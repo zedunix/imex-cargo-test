@@ -18,7 +18,6 @@ export default function GlobalReach(){
         gsap.set(items,{scale:0,opacity:0,transformOrigin:"center center"});
         ScrollTrigger.batch(items,{
           start:"top 85%",
-          toggleActions:"play none none reverse",
           interval:.1,
           batchMax:locations.length,
           onEnter:batch=>{
@@ -41,7 +40,7 @@ export default function GlobalReach(){
     return()=>ctx.revert()
   },[]);
 
-  return <section className="reach section-pad" ref={root}>
+  return <section className="reach section-pad" id="global-reach" ref={root}>
     <div className="reach-copy">
       <p className="eyebrow">Global reach / Connected locally</p>
       <span className="reach-count">{String(active+1).padStart(2,"0")} / {String(locations.length).padStart(2,"0")}</span>

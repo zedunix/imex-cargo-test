@@ -3,22 +3,29 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { services } from "../../content";
-import CargoObject from "./CargoObject";
 gsap.registerPlugin(ScrollTrigger);
 
 const panelColors = ["#f5b62a", "#f7c44c", "#f7cf67", "#f4db8e", "#f7f5ef", "#dce7e9", "#c4d6dc", "#a9c2cc", "#8eaeba"];
+const serviceIcons = [
+  "/service-icons/plane.svg",
+  "/service-icons/ship.svg",
+  "/service-icons/truck.svg",
+  "/service-icons/spray-can-sparkles.svg",
+  "/service-icons/box.svg",
+  "/service-icons/dolly.svg",
+  "/service-icons/triangle-exclamation.svg",
+  "/service-icons/stamp.svg",
+  "/service-icons/motorcycle.svg",
+];
 
 export default function Services() {
   const root = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const masterProgress = useRef(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     const mobile = matchMedia("(max-width:767px)").matches;
     const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
-    setReducedMotion(reduce);
     const ctx = gsap.context(() => {
       if (mobile || reduce) {
         gsap.utils.toArray<HTMLElement>(".service-slide").forEach((el, index) => {
@@ -27,8 +34,8 @@ export default function Services() {
             trigger: el,
             start: "top center",
             end: "bottom center",
-            onEnter: () => { setActive(index); masterProgress.current = index / services.length; },
-            onEnterBack: () => { setActive(index); masterProgress.current = index / services.length; },
+            onEnter: () => { setActive(index); },
+            onEnterBack: () => { setActive(index); },
           });
         });
         return;
@@ -43,7 +50,6 @@ export default function Services() {
           pin: true,
           scrub: .35,
           onUpdate: self => {
-            masterProgress.current = self.progress;
             setActive(Math.min(services.length - 1, Math.round(self.progress * (services.length - 1))));
           },
         },
@@ -52,17 +58,16 @@ export default function Services() {
     return () => ctx.revert();
   }, []);
 
-  return <section className="services" ref={root}>
+  return <section className="services" id="services" ref={root}>
     <div className="service-top section-pad">
       <p className="eyebrow">Capabilities / 01—09</p>
       <div className="service-rail">{services.map((service, index) => <span key={service.number} className={active === index ? "active" : ""}>{service.number}</span>)}</div>
     </div>
-    <CargoObject progressRef={masterProgress} reducedMotion={reducedMotion} />
     <div className="service-track" ref={track}>
       {services.map((service, index) => <article className="service-slide" style={{ backgroundColor: panelColors[index] }} key={service.number}>
         <span className="service-index">{service.number}</span>
-        <div className="service-cargo"><i /><i /><i /></div>
-        <h2>{service.shortTitle}</h2>
+        <div className="service-icon-mark"><img src={serviceIcons[index]} alt="" draggable="false" /></div>
+        <div className="service-word"><h2>{service.shortTitle}</h2></div>
         <div className="service-copy"><small>{String(index + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}</small><h3>{service.title}</h3><p>{service.description}</p></div>
       </article>)}
     </div>

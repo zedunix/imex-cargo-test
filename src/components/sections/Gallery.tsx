@@ -37,7 +37,7 @@ export default function Gallery() {
     return () => ctx.revert();
   }, []);
 
-  return <section className="gallery-story section-pad" ref={root} aria-labelledby="gallery-title">
+  return <section className="gallery-story section-pad" id="gallery" ref={root} aria-labelledby="gallery-title">
     <header className="gallery-story-head">
       <p className="eyebrow">Inside IMEX / people and progress</p>
       <h2 id="gallery-title">THE JOURNEY,<br/><span>IN FRAME.</span></h2>

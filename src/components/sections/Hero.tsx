@@ -40,5 +40,5 @@ export default function Hero() {
     }, root);
     return () => ctx.revert();
   }, []);
-  return <section className="hero section-pad" ref={root}><p className="eyebrow">Global freight / local precision</p><h1>{["WE", "MOVE", "WHAT"].map(w => <span className="word-clip" key={w}><span className="hero-word">{w}</span></span>)}<span className="word-clip accent-line"><span className="hero-word">MOVES YOU.</span></span></h1><div className="stats">{stats.map(s => <div className="stat" key={s.label}><strong><span data-count={s.value}>0</span>{s.suffix}</strong><span>{s.label}</span></div>)}</div></section>;
+  return <section className="hero section-pad" id="home" ref={root}><p className="eyebrow">Global freight / local precision</p><h1>{["WE", "MOVE", "WHAT"].map(w => <span className="word-clip" key={w}><span className="hero-word">{w}</span></span>)}<span className="word-clip accent-line"><span className="hero-word">MOVES YOU.</span></span></h1><div className="stats">{stats.map(s => <div className="stat" key={s.label}><strong><span data-count={s.value}>0</span>{s.suffix}</strong><span>{s.label}</span></div>)}</div></section>;
 }

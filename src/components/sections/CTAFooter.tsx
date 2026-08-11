@@ -8,49 +8,60 @@ export default function CTAFooter() {
   const [sent, setSent] = useState(false);
   useEffect(() => {
     const ctx = gsap.context(() => gsap.from(".cta-title", {
-      scale: .9, opacity: 0, color: "#f5b62a", duration: .7, ease: "back.out(1.4)",
-      scrollTrigger: { trigger: root.current, start: "top 65%" },
+      y: 28, opacity: 0, duration: .65, ease: "power3.out",
+      scrollTrigger: { trigger: root.current, start: "top 72%" },
     }), root);
     return () => ctx.revert();
   }, []);
   const submit = (event: FormEvent) => { event.preventDefault(); setSent(true); };
 
-  return <footer className="cta section-pad" ref={root}>
-    <div className="cta-main">
-      <p className="eyebrow">Start a shipment</p>
-      <h2 className="cta-title">LET’S MOVE<br/><span>FORWARD.</span></h2>
-      <form onSubmit={submit}>
-        <label>Name<input required placeholder="Your name" /></label>
-        <label>Company<input required placeholder="Company name" /></label>
-        <label>Phone<input type="tel" placeholder="+971 00 000 0000" /></label>
-        <label>Email<input required type="email" placeholder="you@company.com" /></label>
-        <label>Service<select defaultValue=""><option value="" disabled>Select service</option>{services.map(service => <option key={service.number}>{service.title}</option>)}</select></label>
-        <label className="wide">Message<textarea rows={3} placeholder="Tell us what needs to move" /></label>
-        <button className="submit" type="submit">{sent ? "REQUEST RECEIVED ✓" : "SEND REQUEST ↗"}</button>
-      </form>
-    </div>
+  return <footer className="cta section-pad" id="contact" ref={root}>
+    <div className="cta-shell">
+      <section className="cta-card" aria-labelledby="cta-title">
+        <p className="eyebrow">Start a shipment</p>
+        <h2 className="cta-title" id="cta-title">Let’s move<br/>forward.</h2>
+        <p className="cta-card-copy">Tell us what needs to move and the IMEX team will route the next step.</p>
+        <form onSubmit={submit}>
+          <label>Name<input required placeholder="Your name" /></label>
+          <label>Email<input required type="email" placeholder="you@company.com" /></label>
+          <label className="wide">Service<select defaultValue=""><option value="" disabled>Select service</option>{services.map(service => <option key={service.number}>{service.title}</option>)}</select></label>
+          <button className="submit" type="submit">{sent ? "REQUEST RECEIVED" : "SEND REQUEST"}</button>
+        </form>
+      </section>
 
-    <div className="site-footer">
-      <div className="footer-brand">
-        <img src="/brand/imex-logo-dark.png" alt="IMEX Cargo LLC" />
-        <p>15+ years moving freight with precision, from Dubai to every major trade lane on earth. ISO 9001:2015 certified and trusted by 1,580+ clients worldwide.</p>
-        <div className="footer-social"><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="Instagram">◎</a></div>
-      </div>
-      <nav className="footer-column" aria-label="Footer navigation">
-        <strong>NAVIGATE</strong>
-        <a href="#">About Us</a><a href="#">Services</a><a href="#">Global Reach</a><a href="#">Awards</a><a href="#">Gallery</a><a href="#">Careers</a><a href="#">Contact</a>
-      </nav>
-      <nav className="footer-column" aria-label="Services">
-        <strong>SERVICES</strong>
-        {services.map(service => <a href="#" key={service.number}>{service.title}</a>)}
-      </nav>
-      <div className="footer-column footer-contact">
-        <strong>GET IN TOUCH</strong>
-        <a href="tel:+97142823411">☎ &nbsp;+971 4 282 3411</a>
-        <a href="mailto:enquiry@imex.ae">✉ &nbsp;enquiry@imex.ae</a>
-        <p>Mon – Sat: 9:00 AM – 6:00 PM<br/>Sunday: Closed</p>
+      <div className="site-footer">
+        <nav className="footer-nav" aria-label="Footer navigation">
+          <a href="#home">Home.</a>
+          <a href="#about">About.</a>
+          <a href="#services">Services.</a>
+          <a href="#global-reach">Global Reach.</a>
+          <a href="#gallery">Gallery.</a>
+          <a href="#contact">Get in touch.</a>
+        </nav>
+
+        <div className="footer-info">
+          <div className="footer-brand">
+            <img src="/brand/imex-logo-light.png" alt="IMEX Cargo LLC" />
+            <p>15+ years moving freight with precision across major trade lanes.</p>
+          </div>
+          <div className="footer-column">
+            <strong>Head office</strong>
+            <p>IMEX Cargo LLC<br/>Dubai, United Arab Emirates</p>
+          </div>
+          <div className="footer-column">
+            <strong>Operations</strong>
+            <p>Mon - Sat: 9:00 AM - 6:00 PM<br/>Sunday: Closed</p>
+          </div>
+          <div className="footer-column footer-contact">
+            <strong>Email</strong>
+            <a href="mailto:enquiry@imex.ae">enquiry@imex.ae</a>
+            <a href="tel:+97142823411">+971 4 282 3411</a>
+          </div>
+        </div>
+
+        <div className="footer-legal"><span>© 2026 IMEX Cargo LLC. All rights reserved.</span><span>Dubai, United Arab Emirates</span></div>
       </div>
     </div>
-    <div className="footer-legal"><span>© 2026 IMEX Cargo LLC.</span><span>Dubai, United Arab Emirates</span><span>Freight without friction.</span></div>
+    <div className="footer-statement" aria-hidden="true">LET’S DISCUSS TODAY</div>
   </footer>;
 }
