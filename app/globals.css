@@ -253,3 +253,151 @@ main>section,main>footer { position:relative; z-index:2; transform-origin:50% 0;
   main>section,main>footer { clip-path:none!important; transform:none!important; }
   .video-surface video { display:none; }
 }
+
+/* Final CTA/footer scale pass. This lives at the end so earlier compact rules cannot hide it. */
+@media (min-width:768px) {
+  .cta {
+    height:100svh;
+    min-height:760px;
+    overflow:hidden;
+    align-content:center;
+    padding:clamp(28px,3.45vw,51px) clamp(28px,4.35vw,74px);
+  }
+  .cta-shell {
+    display:grid;
+    grid-template-columns:minmax(403px,495px) minmax(690px,1fr);
+    align-items:center;
+    gap:clamp(39px,4.15vw,67px);
+    width:100%;
+    max-width:1518px;
+    margin:0 auto;
+  }
+  .cta-card {
+    min-height:clamp(575px,71vh,679px);
+    padding:clamp(35px,3.45vw,51px);
+  }
+  .cta h2 {
+    font-size:clamp(53px,5.05vw,76px);
+    line-height:.9;
+    margin:clamp(18px,2.05vh,25px) 0 14px;
+  }
+  .cta-card-copy {
+    font-size:18px;
+    line-height:1.45;
+  }
+  .cta form {
+    gap:13px;
+  }
+  .cta label {
+    font-size:13px;
+  }
+  .cta input,.cta textarea,.cta select {
+    padding:15px 17px;
+    font-size:18px;
+  }
+  .submit {
+    padding:17px 21px;
+    font-size:16px;
+  }
+  .site-footer {
+    gap:clamp(23px,3.45vh,37px);
+    padding:0;
+  }
+  .footer-nav {
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,auto));
+    justify-content:space-between;
+    gap:clamp(16px,2.05vw,32px);
+    padding-bottom:clamp(16px,2.05vh,25px);
+    font-size:14px;
+  }
+  .footer-info {
+    display:grid;
+    grid-template-columns:minmax(173px,1fr) minmax(184px,1fr) minmax(253px,1.15fr);
+    gap:clamp(25px,3.45vw,51px);
+    align-items:start;
+  }
+  .footer-brand {
+    grid-column:1/-1;
+    display:flex;
+    align-items:center;
+    gap:20px;
+  }
+  .footer-brand img {
+    width:166px;
+    margin:0;
+  }
+  .footer-brand p {
+    font-size:16px;
+    line-height:1.5;
+  }
+  .footer-column {
+    gap:10px;
+    font-size:15px;
+  }
+  .footer-column strong {
+    margin-bottom:3px;
+    font-size:13px;
+  }
+  .footer-column p {
+    font-size:16px;
+    line-height:1.5;
+  }
+  .footer-column a,
+  .footer-contact a[href^="mailto"] {
+    font-size:clamp(24px,2vw,32px);
+    line-height:1.14;
+  }
+  .footer-contact a[href^="mailto"] {
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+  .footer-legal {
+    font-size:10px;
+  }
+}
+
+@media (max-width:1320px) and (min-width:768px) {
+  .cta {
+    padding-inline:clamp(24px,3vw,48px);
+  }
+  .cta-shell {
+    grid-template-columns:minmax(380px,449px) minmax(0,1fr);
+    gap:clamp(28px,3vw,46px);
+  }
+  .cta-card {
+    min-height:clamp(552px,69vh,644px);
+    padding:clamp(32px,3vw,44px);
+  }
+  .cta h2 {
+    font-size:clamp(48px,4.8vw,69px);
+  }
+  .cta-card-copy,.cta input,.cta textarea,.cta select {
+    font-size:17px;
+  }
+  .cta label {
+    font-size:12px;
+  }
+  .submit {
+    font-size:15px;
+  }
+  .footer-nav {
+    font-size:14px;
+  }
+  .footer-brand img {
+    width:150px;
+  }
+  .footer-brand p,.footer-column p {
+    font-size:15px;
+  }
+  .footer-column strong {
+    font-size:13px;
+  }
+  .footer-column a,
+  .footer-contact a[href^="mailto"] {
+    font-size:clamp(23px,1.95vw,30px);
+  }
+  .footer-legal {
+    font-size:10px;
+  }
+}
